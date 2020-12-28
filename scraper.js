@@ -11,18 +11,14 @@ axios
     const links = $("td > b > a", data.data)
       .get()
       .map((x) => $(x).attr("href"));
-    // return links;
-    //   })
-    //   .then((result) => {
     return Promise.all(
-      links.map(async(url) => {
-        return  await potusParse(`https://en.wikipedia.org${url}`);
-         
+      links.map(async (url) => {
+       return await potusParse(`https://en.wikipedia.org${url}`);
+    
       })
-    );
-  })
-  .then((res) => {
-    console.log(res);
+    ).then((res) => {
+      console.log(res);
+    });
   })
   .catch((error) => {
     console.log(error);
